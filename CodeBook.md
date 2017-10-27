@@ -1,1 +1,1 @@
-# Data Dictionary - {{tidy_data}}
+# Data Dictionary - `tidy_data`
