@@ -5,7 +5,7 @@ This documents provides a high level overiew of what the analysis file `run_anal
 The analysis file `run_analysis.R` can be broken down in to a few sections.
 
 ## Data loading
-The script first downloads the data from the course web site. The script will then unzip and load the following data files into memory:
+The script first downloads the data from the course web site. The script will then unzip the file in the current working directory and load the following data files into memory:
 
 - /train/X_train.txt
 - /test/X_test.txt
