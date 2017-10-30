@@ -1,5 +1,6 @@
 # Course Project - Getting and Cleaning Data
-Course Project for Week 4 of "Getting and Cleaning Data" course
+
+This documents provides a high level overiew of what the analysis file `run_analysis.R` script does.
 
 The analysis file `run_analysis.R` can be broken down in to a few sections.
 
