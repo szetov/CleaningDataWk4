@@ -36,9 +36,17 @@ all.data$activity <- factor(all.act$activity.code, levels = act$activity.code,
                             labels = c("Walking", "Walking Upstairs", "Walking Downstairs",
                                        "Sitting", "Standing", "Laying"))
 
+
+#prepare tidy data set, calculate the mean of all measurements
+library(dplyr)
+cols <- names(all.data)
+tidy.data <- all.data %>%
+  group_by(subject, activity) %>%
+  summarise_at(cols[!cols %in% c("activity", "subject")], mean)
+
 #give meaningful variable names
 new.cols <- c()
-for (col in names(all.data)) {
+for (col in names(tidy.data)) {
   if (grepl("-(mean)|(std)\\(\\)", col)) {
     new_col <- paste("mean.of", col, sep=".")
     new_col <- gsub("\\(\\)", "", new_col)
@@ -47,11 +55,4 @@ for (col in names(all.data)) {
     new.cols <- c(new.cols, col)
   }
 }
-names(all.data) <- new.cols
-
-#prepare tidy data set, calculate the mean of all measurements
-library(dplyr)
-tidy.data <- all.data %>%
-  group_by(subject, activity) %>%
-  summarise_at(new.cols[!new.cols %in% c("activity", "subject")], mean)
-
+names(tidy.data) <- new.cols
